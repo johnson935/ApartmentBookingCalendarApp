@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-mongoose.connect("mongodb://admin:Whycant1login@bookingcalendardata-shard-00-00.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-01.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-02.tykzd.mongodb.net:27017/bookingCalendarDatabase?ssl=true&replicaSet=atlas-oplbzk-shard-0&authSource=admin&retryWrites=true&w=majority",{ useNewUrlParser: true,useUnifiedTopology: true},function(error) {
+mongoose.connect("mongodb://admin:Whycant1login@bookingcalendardata-shard-00-00.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-01.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-02.tykzd.mongodb.net:27017/bookingCalendarDatabase?ssl=true&replicaSet=atlas-oplbzk-shard-0&authSource=admin&retryWrites=true&w=majority",{ useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true},function(error) {
   console.log("inside?");
   console.log(error);
 });
@@ -48,5 +48,5 @@ app.use(function(err, req, res, next) {
 });
 
 
-app.listen(2000);
+app.listen(process.env.PORT || 2000);
 module.exports = app;
