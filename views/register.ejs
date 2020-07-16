@@ -11,6 +11,9 @@
                 <input style="margin-bottom: 1em;" class="col-offset-3 col-sm-6" type="password" name="password" placeholder="Password" required></input>
                 <button  class="col-offset-3 col-sm-6 btn btn-primary">Submit</button>
             </form>
+            <% if(message !== null) {%>
+                <h3><%= message %></h3>
+                <% } %>
         </div>
     </div>
     </div>

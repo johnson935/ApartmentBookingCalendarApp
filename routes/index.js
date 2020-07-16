@@ -26,7 +26,7 @@ passport.deserializeUser(User.deserializeUser());
 
 /* GET home page. */
 router.get("/register", adminLoggedIn, function(req,res){
-  res.render("register", {isLoggedIn: false});
+  res.render("register", {isLoggedIn: true, message: null, username: req.user.username});
 });
 
 router.post("/register", adminLoggedIn, function(req,res){
@@ -35,11 +35,9 @@ router.post("/register", adminLoggedIn, function(req,res){
     if (err)
     {
       console.log(err);
-      return res.render("register", {error: err});
+      return res.render("register", {isLoggedIn: true, message: err, username: req.user.username});
     }
-    passport.authenticate("local")(req,res,function(){
-      res.redirect("/selectPage");
-    });
+      res.render("register", {isLoggedIn: true, message: "The user has been successfully created",username: req.user.username});
   } );
 });
 router.get('/login', hasLoggedIn, function(req, res, next) {
