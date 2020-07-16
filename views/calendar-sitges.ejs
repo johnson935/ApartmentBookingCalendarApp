@@ -1,7 +1,6 @@
 <%- include("partials/header") %>
 
 <script type="text/javascript" charset="utf-8">
-    var value = 'sitges';
     function onPropertyChange(selected){
         value = selected.value; 
         init();
@@ -11,29 +10,20 @@
 
         scheduler.templates.xml_date = function(value){ return new Date(value); };
         scheduler.config.xml_date="%Y-%m-%d %H:%i";
-        
-        if (value === 'sitges'){
             scheduler.clearAll();
-            scheduler.load("/data_sitges", "json");
-            var dp = new dataProcessor("/data_sitges");
-        } else if (value === 'palm-springs'){
-            scheduler.clearAll();
-            scheduler.load("/data_palmSprings", "json");
-            var dp = new dataProcessor("/data_palmSprings");
-            var p = document.getElementById("image");
-            if (p !== null){
-                p.parentNode.removeChild(p);
-            }
+            scheduler.load("/sitges/data_sitges", "json");
+            var dp = new dataProcessor("/sitges/data_sitges");
+
 
             var elem = document.createElement("img");
-            elem.setAttribute("src", "images/palm-springs.JPG");
+            elem.setAttribute("src", "../images/palm-springs.JPG");
             elem.setAttribute("height", "100");
             elem.setAttribute("width", "100");
             elem.setAttribute("alt", "Palm-Springs");
             elem.setAttribute("id", "image");
             elem.setAttribute("style", "border-radius:50%;");
             document.getElementById("dropdown-image").appendChild(elem);
-        }
+        
         dp.init(scheduler);
         dp.setTransactionMode("POST", false);
     }
@@ -46,13 +36,7 @@
 <% } %>
 <body onload="init();">
     <div style="text-align: center;" id="dropdown-image">
-        <label>
-            Select Property:
-        </label>
-        <select name="properties" id="property-select" onchange="onPropertyChange(this)">
-            <option value="sitges">Sitges</option>
-            <option value="palm-springs">Palm-Springs</option>
-          </select>
+
     </div>
     
         <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:70%;'>
