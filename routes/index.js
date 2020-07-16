@@ -81,6 +81,9 @@ function hasLoggedIn(req, res, next){
 }
 
 function adminLoggedIn(req, res, next){
+  if (req.user === undefined){
+    return res.redirect("/login");
+  }
   if(req.user.username === "admin"){
     return next();
   }
