@@ -1,31 +1,25 @@
 <%- include("partials/header") %>
 <style>
     .column {
-  float: left;
   padding: 25px;
 }
-
+body{
+     overflow:visible; 
+    }
 </style>
 <div class="container" style="text-align:center;">
     <div class="row">
-        <div class="col-sm-6 center">
+        <div class="col-sm-6">
+            <label>Palm Springs</label>
             <a href="/palm-springs/calendar">
-                <img style="border-radius: 50%;" src="images/palm-springs.JPG" alt="Palm Springs"  width="70%"/>       
+                <img style="border-radius: 50%; max-width:100%" src="images/palm-springs.JPG" alt="Palm Springs"  height="500" width="500"/>       
             </a>
         </div>
             <div class="col-sm-6">
+                <label>Sitges</label>
                 <a href="/sitges/calendar">
-                    <img style="border-radius: 50%;" src="images/palm-springs.JPG" alt="Palm Springs" width="70%"/>        
+                    <img style="border-radius: 50%;  max-width:100%" src="images/palm-springs.JPG" alt="Palm Springs" height="500" width="500"/>        
                 </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 center">
-                <label>Palm-Springs</label>
-        </div>
-            
-            <div class="col-sm-6">
-            <label>Sitges</label>
         </div>
     </div>
         
