@@ -8,7 +8,8 @@ var session = require('express-session');
 
 var db = require('mongoskin').db("mongodb://admin:Whycant1login@bookingcalendardata-shard-00-00.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-01.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-02.tykzd.mongodb.net:27017/bookingCalendarDatabase?ssl=true&replicaSet=atlas-oplbzk-shard-0&authSource=admin&retryWrites=true&w=majority");
     db.bind('event_sitges');
-    db.bind('event_palmSprings');
+var db2 = require('mongoskin').db("mongodb://admin:Whycant1login@bookingcalendardata-shard-00-00.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-01.tykzd.mongodb.net:27017,bookingcalendardata-shard-00-02.tykzd.mongodb.net:27017/bookingCalendarDatabase2?ssl=true&replicaSet=atlas-oplbzk-shard-0&authSource=admin&retryWrites=true&w=majority");
+    db2.bind('event_palmSprings');
 // required for passport session
 router.use(session({
   secret: 'secrettexthere',
@@ -93,7 +94,7 @@ router.post('/data_sitges', function(req, res){
 
 //palm-springs calendar data
 router.get('/data_palmSprings', function(req, res){
-  db.event_palmSprings.find().toArray(function(err, data){
+  db2.event_palmSprings.find().toArray(function(err, data){
       //set id property for all records
       if (data !== undefined){
         for (var i = 0; i < data.length; i++)
@@ -132,11 +133,11 @@ router.post('/data_palmSprings', function(req, res){
 
   //run db operation
   if (mode == "updated")
-      db.event_palmSprings.updateById( sid, data, update_response);
+      db2.event_palmSprings.updateById( sid, data, update_response);
   else if (mode == "inserted")
-      db.event_palmSprings.insert(data, update_response);
+      db2.event_palmSprings.insert(data, update_response);
   else if (mode == "deleted")
-      db.event_palmSprings.removeById( sid, update_response);
+      db2.event_palmSprings.removeById( sid, update_response);
   else
       res.send("Not supported operation");
 });
