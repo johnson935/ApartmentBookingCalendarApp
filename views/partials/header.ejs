@@ -35,13 +35,14 @@
                           </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="nav navbar-nav ml-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/selectPage">Select Property</a>
-                                </li>
+                                
                                 <%if (!isLoggedIn) { %>
                                 <li class="nav-item active"> <a class= "nav-link" href="/login"> Login </a></li>
                                 
                                 <% } else {%>
+                                    <li class="nav-item active">
+                                        <a class="nav-link" href="/selectPage">Select Property</a>
+                                    </li>
                                 <li class="nav-item active"> <a class= "nav-link" href="/logout">Logout</a></li>
                                     <% if (username === "admin"){ %>
                                         <li class="nav-item active"> <a class= "nav-link" href="/register"> Register </a></li>
