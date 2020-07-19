@@ -5,7 +5,7 @@
         scheduler.init('scheduler_here',new Date(),"month");
 
         scheduler.templates.xml_date = function(value){ return new Date(value); };
-        scheduler.config.xml_date=scheduler.date.str_to_date("%Y-%m-%d %H:%i");
+  
             scheduler.load("/palm-springs/data_palmSprings", "json");
             var dp = new dataProcessor("/palm-springs/data_palmSprings");
             var p = document.getElementById("image");

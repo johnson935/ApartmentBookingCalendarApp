@@ -9,7 +9,6 @@
         scheduler.init('scheduler_here',new Date(),"month");
 
         scheduler.templates.xml_date = function(value){ return new Date(value); };
-        scheduler.config.xml_date="%Y-%m-%d %H:%i";
             scheduler.clearAll();
             scheduler.load("/sitges/data_sitges", "json");
             var dp = new dataProcessor("/sitges/data_sitges");

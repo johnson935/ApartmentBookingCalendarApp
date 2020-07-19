@@ -28,8 +28,9 @@ router.get('/data_palmSprings', function(req, res){
     db2.event_palmSprings.find().toArray(function(err, data){
         //set id property for all records
         if (data !== undefined){
-          for (var i = 0; i < data.length; i++)
-          data[i].id = data[i]._id;
+          for (var i = 0; i < data.length; i++){
+            data[i].id = data[i]._id;
+          }
   
       //output response
           res.send(data);
