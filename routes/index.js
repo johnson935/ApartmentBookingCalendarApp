@@ -14,7 +14,7 @@ router.use(session({
   secret: 'secrettexthere',
   saveUninitialized: false,
   resave: false,
-
+  cookie:{_expires : 60 * 60 * 1000}
 }));
 router.use(passport.initialize());
 router.use(passport.session());
