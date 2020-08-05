@@ -18,7 +18,12 @@ body{
                 <img style="border-radius: 50%;float:left;" src="images/sitges.jpg" alt="Sitges" height="500" width="500"/>        
             </a>
         </div>
-    </div>    
+    </div> 
+ 
+    <% if (username === "admin"){ %>
+        <% users.forEach(function(user){ %>
+            <p>  <%= user.username %> last logged in: <%= user.lastLogin %></p>
+        <% })} %>
     </div>
 
     <%- include("partials/footer") %>

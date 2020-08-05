@@ -44,13 +44,20 @@ router.get('/login', hasLoggedIn, function(req, res, next) {
   console.log(req.isAuthenticated());
   res.render("login", {isLoggedIn: false});
 });
-router.post("/login", hasLoggedIn, passport.authenticate("local", {
-  successRedirect: "/selectPage",
+router.post("/login", hasLoggedIn, passport.authenticate("local",
+{
   failureRedirect: "/login"
-}), function(req, res){
-  console.log("Success");
+}), function(req, res, next){
+  User.findByIdAndUpdate(req.user.id, {$set: {lastLogin: Date.now()}}, function (err, result){
+    
+  })
+
+  res.redirect("/selectPage")
 });
 router.get("/logout", function(req,res){
+  User.findByIdAndUpdate(req.user.id, {$set: {lastLogin: Date.now()}}, function (err, result){
+    
+  })
   req.logout();
   res.redirect("/login");
 });
@@ -60,8 +67,10 @@ router.get('/selectPage', isLoggedIn, function(req, res, next) {
   if (req.user.username === 'admin'){
     isAdmin = true;
   }
- 
-  res.render('selectPage', {isLoggedIn:req.isAuthenticated(), admin:isAdmin, username: req.user.username});
+  User.find({}, function(err, allUsers) {
+    res.render('selectPage', {users: allUsers, isLoggedIn:req.isAuthenticated(), admin:isAdmin, username: req.user.username});
+
+  })
 });
 
 function isLoggedIn(req, res, next){
