@@ -14,7 +14,7 @@
     "fullcalendar": "^5.1.0",
     "http-errors": "^1.6.3",
     "jade": "^1.11.0",
-    "mongodb": "^2.2.36",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.9.24",
     "mongoskin": "^2.1.0",
     "morgan": "^1.9.1",
